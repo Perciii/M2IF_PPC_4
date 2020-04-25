@@ -1,8 +1,8 @@
 #include <cstring>
 #include <fstream>
-#include "sha256.h"
-#include "hash.h"
-#include "sha256Version.h"
+#include "../interfaces/sha256.h"
+#include "../interfaces/hash.h"
+#include "../interfaces/sha256Version.h"
 
 const unsigned int SHA256::sha256_k[64] = //UL = uint32
 {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
@@ -147,12 +147,13 @@ std::string version()
 	return SHA256_VERSION_STR;
 }
 
+
 #include <boost/python.hpp>
 
 BOOST_PYTHON_MODULE(hash)
 {
 	using namespace boost::python;
-	def("hashCode", hash);
+	def("hash", hash);
 	def("hashName", hashName);
 	def("version", version);
 }
