@@ -1,7 +1,7 @@
 ifdef PARAM
 	COMPONENTS =${PARAM}
 else
-	COMPONENTS=hash
+	COMPONENTS=composant4
 endif
 all: test
 

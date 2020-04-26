@@ -74,6 +74,7 @@ std::string version()
 	return "v1.0.0";
 }
 
+/*
 #include <boost/python.hpp>
 
 BOOST_PYTHON_MODULE(hash)
@@ -85,3 +86,4 @@ BOOST_PYTHON_MODULE(hash)
 	def("buildBlocFull", buildBlocFull);
 	def("version", version);
 }
+*/

@@ -39,22 +39,5 @@ keccak_256
 
 int main(int argc, char *argv[])
 {
-	std::vector<string> test_vector = {"", 
-		"a", 
-		"abc", 
-		"message digest", 
-		"abcdefghijklmnopqrstuvwxyz", 
-		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-		"12345678901234567890123456789012345678901234567890123456789012345678901234567890", 
-		"The quick brown fox jumps over the lazy dog"
-	};
-
-	string output;
-
-	for (auto it = test_vector.begin(); it<test_vector.end(); it++){
-		output=hash(*it);
-
-		cout <<  "hashName_V" << version() << "()" << "('"<< *it << "'):" << output << endl;
-
-	}
+	
 }
