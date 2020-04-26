@@ -138,13 +138,5 @@ std::string hash(std::string input)
 	return sha256(input);
 }
 
-std::string hashName()
-{
-	return "sha256";
-}
-std::string version()
-{
-	return SHA256_VERSION_STR;
-}
 
 
