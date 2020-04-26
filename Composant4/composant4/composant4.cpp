@@ -3,11 +3,15 @@
 
 std::string hashBloc(Bloc bloc)
 {
-	
+    std::string previous_hash = "";
+    for (int i = 0; i < HASH_SIZE; ++i) {
+        previous_hash += bloc.previous_hash[i];
+    }
+	return hash(""<< bloc.num << '|' + << previous_hash << '|'<< bloc.nonce )
 }
 bool verifHash(Bloc bloc, std::string hashCode)
 {
-	
+    return (hashBloc(bloc) == hashCode);
 }
 Bloc buildBloc(TX transaction)
 {
