@@ -9,7 +9,7 @@
 std::string hashBloc(Bloc bloc);
 bool verifHash(Bloc bloc, std::string hashCode);
 Bloc buildBloc(TX transaction);
-Bloc buildBlocFull(char hash[], unsigned int nonce, int num, char prevHash[], TX transaction, TXM trasnsactionMineur);
+Bloc buildBlocFull(char prevHash[], TX transaction, TXM trasnsactionMineur, unsigned int nonce, int num);
 std::string version();
 
 #endif

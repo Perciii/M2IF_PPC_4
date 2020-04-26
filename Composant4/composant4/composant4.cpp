@@ -5,10 +5,9 @@
 std::list<Bloc> composant1Blocs()
 {
 	std::list<Bloc> blocs;
-	Bloc b = buildBlocFull(0, 0, "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", TX(), TXM());
+	Bloc b = buildBlocFull("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", TX(), TXM(), 0, 0);
 	blocs.push_front(b);
 }
-
 
 std::string hashBloc(Bloc bloc)
 {
@@ -18,10 +17,12 @@ std::string hashBloc(Bloc bloc)
     }
 	return hash("" + std::to_string(bloc.num) + "|" + previous_hash + "|" + std::to_string(bloc.nonce));
 }
+
 bool verifHash(Bloc bloc, std::string hashCode)
 {
     return (hashBloc(bloc) == hashCode);
 }
+
 Bloc buildBloc(TX transaction)
 {
 	for (UTXO tran : transaction.UTXOs)
@@ -49,7 +50,8 @@ Bloc buildBloc(TX transaction)
 	return b;
 		
 }
-Bloc buildBlocFull(unsigned int _nonce = 0, int _num = 0, char* _prevHash, TX _transaction, TXM _transactionMineur)
+
+Bloc buildBlocFull(char* _prevHash, TX _transaction, TXM _transactionMineur, unsigned int _nonce = 0, int _num = 0)
 {
 	Bloc b = Bloc();
 	b.num = _num;
@@ -69,6 +71,7 @@ Bloc buildBlocFull(unsigned int _nonce = 0, int _num = 0, char* _prevHash, TX _t
 			b.hash[j] = '0';
 	return b;
 }
+
 std::string version()
 {
 	return "v1.0.0";
