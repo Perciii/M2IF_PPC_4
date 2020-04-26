@@ -25,17 +25,23 @@ bool verifHash(Bloc bloc, std::string hashCode)
 
 Bloc buildBloc(TX transaction)
 {
-	for (UTXO tran : transaction.UTXOs)
+	for (UTXO utxo : transaction.UTXOs)
 	{
 		int i = 0;
-		for (char element : hash(tran.toString()).c_str())
+		std::string hashedUtxo = hash(utxo.toString());
+		for(std::string::size_type i = 0; i < hashedUtxo.length(); ++i)
 		{
-			tran.hash[i] = element;
-			i++;
+			char c = hashedUtxo[i];
+			utxo.hash[i] = c;
 		}
+		/*for (char element : hash(utxo.toString()).c_str())
+		{
+			utxo.hash[i] = element;
+			i++;
+		}*/
 		if (i < 63)
 			for (int j = i; j < 63; j++)
-				tran.hash[j] = '0';
+				utxo.hash[j] = '0';
 	}
 	Bloc b = Bloc(transaction);
 	
@@ -45,7 +51,7 @@ Bloc buildBloc(TX transaction)
 	for (Bloc bloc : blocs)
 	{
 		if (bloc.num == b.num - 1)
-			strcpy_s(b.previous_hash,bloc.hash);
+			strcpy(b.previous_hash,bloc.hash);
 	}
 	return b;
 		
@@ -56,7 +62,7 @@ Bloc buildBlocFull(char* _prevHash, TX _transaction, TXM _transactionMineur, uns
 	Bloc b = Bloc();
 	b.num = _num;
 	b.nonce = _nonce;
-	strcpy_s(b.previous_hash,_prevHash);
+	strcpy(b.previous_hash,_prevHash);
 	b.tx1 = _transaction;
 	b.tx0 = _transactionMineur;
 	std::string hs = hashBloc(b);
