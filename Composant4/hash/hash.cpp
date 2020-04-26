@@ -148,12 +148,3 @@ std::string version()
 }
 
 
-#include <boost/python.hpp>
-
-BOOST_PYTHON_MODULE(hash)
-{
-	using namespace boost::python;
-	def("hash", hash);
-	def("hashName", hashName);
-	def("version", version);
-}

@@ -58,8 +58,8 @@ public:
     TX tx1; //  transaction du bloc
     TXM tx0; // transaction du mineur (coinbase)
 
-    std::string toString(); // a implementer par le groupe "Fichier"
-    std::string toStringSansHash(); // a implementer par le groupe "Fichier"
+    //std::string toString(); // a implementer par le groupe "Fichier"
+    //std::string toStringSansHash(); // a implementer par le groupe "Fichier"
 };
 
 #endif
