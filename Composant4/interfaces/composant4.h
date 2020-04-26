@@ -5,9 +5,10 @@
 #include <string>
 #include "../interfaces/bloc.h"
 
-std::string hash(Bloc bloc);
+std::string hashBloc(Bloc bloc);
 bool verifHash(Bloc bloc, std::string hashCode);
 Bloc buildBloc(TX transaction);
+Bloc buildBloc(char hash[], unsigned int nonce, int num, char prevHash[], TX transaction, TXM trasnsactionMineur);
 std::string version();
 
 #endif

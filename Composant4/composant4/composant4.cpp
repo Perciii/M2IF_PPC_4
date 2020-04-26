@@ -6,7 +6,7 @@ std::string hashBloc(Bloc bloc)
 }
 bool verifHash(Bloc bloc, std::string hashCode)
 {
-	
+
 }
 Bloc buildBloc(TX transaction)
 {

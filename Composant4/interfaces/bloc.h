@@ -28,12 +28,10 @@ class UTXO // une sortie non dépensée
 public:
     int nBloc;
     int nTx;
-    int nUTX0;         // ces 3 champs nBloc,nTx,nUTX0) forment l'identifiant unique de l'UTXO
+    int nUTX0;         // ces 3 champs (nBloc,nTx,nUTX0) forment l'identifiant unique de l'UTXO
     float montant;
     unsigned char dest[KEY_SIZE];  //	compte destinataire (clé publique)
     unsigned char hash[HASH_SIZE];    // hash(nBloc,nTx,nUTXO,montant,destinataire) pour securisation de l'UTXO
-
-    std::string ToString();    // serialisation (necessaire au hash)
 };
 
 class TX { // transaction standard (many inputs, many outputs)
@@ -50,6 +48,7 @@ public:
 class Bloc
 {
 public:
+    static int nbBloc;     //Nombre de bloc déjà créé dans la bloc chaine
     char hash[HASH_SIZE]; // hash des autres champs, hash of the entire bloc
     unsigned int nonce;
 
@@ -57,9 +56,6 @@ public:
     int num; // numero du bloc, commence a zero
     TX tx1; //  transaction du bloc
     TXM tx0; // transaction du mineur (coinbase)
-
-    //std::string toString(); // a implementer par le groupe "Fichier"
-    //std::string toStringSansHash(); // a implementer par le groupe "Fichier"
 };
 
 #endif
