@@ -1,13 +1,22 @@
 #include "../interfaces/composant4.h"
 #include <list>
 
+// MOCK function of composant1
+std::list<Bloc> composant1Blocs()
+{
+	std::list<Bloc> blocs;
+	Bloc b = buildBlocFull(0, 0, "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", TX(), TXM());
+	blocs.push_front(b);
+}
+
+
 std::string hashBloc(Bloc bloc)
 {
     std::string previous_hash = "";
     for (int i = 0; i < HASH_SIZE; ++i) {
         previous_hash += bloc.previous_hash[i];
     }
-	return hash(""<< bloc.num << '|' + << previous_hash << '|'<< bloc.nonce )
+	return hash("" + std::to_string(bloc.num) + "|" + previous_hash + "|" + std::to_string(bloc.nonce));
 }
 bool verifHash(Bloc bloc, std::string hashCode)
 {
@@ -48,6 +57,16 @@ Bloc buildBlocFull(unsigned int _nonce = 0, int _num = 0, char* _prevHash, TX _t
 	strcpy_s(b.previous_hash,_prevHash);
 	b.tx1 = _transaction;
 	b.tx0 = _transactionMineur;
+	std::string hs = hashBloc(b);
+	int i = 0;
+	for (char element : hs)
+	{
+		b.hash[i] = element;
+		i++;
+	}
+	if (i < 63)
+		for (int j = i; j < 63; j++)
+			b.hash[j] = '0';
 	return b;
 }
 std::string version()

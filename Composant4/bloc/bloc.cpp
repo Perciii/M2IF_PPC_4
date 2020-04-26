@@ -2,15 +2,14 @@
 
 Bloc::Bloc()
 {
-	
-}
-
-Bloc::Bloc(TX & transac)
-{
-	tx1 = transac;
 	nonce = 0;
 	nbBloc++;
 	num = nbBloc;
+}
+
+Bloc::Bloc(TX & transac) : Bloc()
+{
+	tx1 = transac;
 }
 
 std::string UTXO::toString()
