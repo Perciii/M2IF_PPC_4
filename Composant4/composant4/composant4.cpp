@@ -1,21 +1,22 @@
 #include "../interfaces/composant4.h"
 #include <list>
-
+#include <cstring>
+using namespace std;
 // MOCK function of composant1
-std::list<Bloc> composant1Blocs()
+list<Bloc> composant1Blocs()
 {
 	std::list<Bloc> blocs;
 	Bloc b = buildBlocFull("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", TX(), TXM(), 0, 0);
 	blocs.push_front(b);
 }
 
-std::string hashBloc(Bloc bloc)
+string hashBloc(Bloc bloc)
 {
     std::string previous_hash = "";
     for (int i = 0; i < HASH_SIZE; ++i) {
         previous_hash += bloc.previous_hash[i];
     }
-	return hash("" + std::to_string(bloc.num) + "|" + previous_hash + "|" + std::to_string(bloc.nonce));
+	return hasher("" + std::to_string(bloc.num) + "|" + previous_hash + "|" + std::to_string(bloc.nonce));
 }
 
 bool verifHash(Bloc bloc, std::string hashCode)
@@ -28,7 +29,7 @@ Bloc buildBloc(TX transaction)
 	for (UTXO utxo : transaction.UTXOs)
 	{
 		int i = 0;
-		std::string hashedUtxo = hash(utxo.toString());
+		std::string hashedUtxo = hasher(utxo.toString());
 		for(std::string::size_type i = 0; i < hashedUtxo.length(); ++i)
 		{
 			char c = hashedUtxo[i];

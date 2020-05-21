@@ -133,7 +133,7 @@ std::string sha256(std::string input)
 	return std::string(buf);
 }
 
-std::string hash(std::string input)
+std::string hasher(std::string input)
 {
 	return sha256(input);
 }

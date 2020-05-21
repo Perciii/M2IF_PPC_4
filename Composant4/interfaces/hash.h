@@ -5,7 +5,7 @@
 #include <string>
 
 
-std::string hash(std::string input);
+std::string hasher(std::string input);
 std::string hashName();
 std::string version();
 

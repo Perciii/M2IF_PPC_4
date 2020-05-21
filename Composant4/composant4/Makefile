@@ -1,4 +1,4 @@
-CPPFLAGS=-I../interfaces
+CPPFLAGS=../interfaces
 
 COMPOSANT = composant4
 
