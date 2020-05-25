@@ -40,3 +40,7 @@ Release
 ipch
 *sdf
 .vs/
+
+*.swp
+*.swo
+bin/
