@@ -3,8 +3,8 @@ CPPFLAGS=../interfaces
 COMPOSANT = composant4
 
 LIBSO = lib${COMPOSANT}.so
-LIBSO_OBJS = ${COMPOSANT}.o
-DESTINATION_DIR = ../lib
+LIBSO_OBJS = ${COMiPOSANT}.o
+DESTINATION_DIR = ../../lib
 DESTINATION_LIBSO = ${DESTINATION_DIR}/${LIBSO}
 
 include ../gcc.mk
